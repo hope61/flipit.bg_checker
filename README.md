@@ -1,6 +1,6 @@
 # flipit.bg_checker
 
-flipit.bg_checker is a Python script that monitors the price of a product on the flip.bg website and sends a notification when the price falls below a specified threshold. It utilizes web scraping techniques to extract the price and other information from the website. The script can be used to track price drops and take advantage of discounted offers.
+flipit.bg_checker is a Python script that monitors the price of a product on the flip.bg website and sends a notification when the price falls below a specified threshold and if the product goes out of stock its gonna notify you. It utilizes web scraping techniques to extract the price and other information from the website. The script can be used to track price drops and take advantage of discounted offers.
 Prerequisites
 
 ![image](https://github.com/hope61/flipit.bg_checker/blob/master/imgs/Screenshot%202023-05-29%20173151.png?raw=true)
