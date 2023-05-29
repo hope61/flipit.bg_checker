@@ -34,6 +34,8 @@ Rename the .env.example file to .env:
 Open the .env file and provide the necessary values:
 Set the web_hock variable to the Discord webhook URL where you want to receive notifications.
 
+Edit the var.py found inside the core folder
+
 Run the script:
 
     python flipit_bg_checker.py
