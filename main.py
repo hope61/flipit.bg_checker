@@ -13,7 +13,7 @@ start_time = datetime.now()
 
 def print_statistics(total_requests, below_min_price_count, uptime):
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(f"Total Requests: {total_requests} | Below Min Price Count: {below_min_price_count} | Uptime: {uptime}")
+    print(f"Total Requests: {total_requests} | Below Min Price Count: {below_min_price_count} | Uptime: {uptime} | Current Price: {current_price}")
 
 while True:
     total_requests += 1
@@ -37,5 +37,5 @@ while True:
         elapsed_time = datetime.now() - start_time
         uptime = str(elapsed_time).split(".")[0]
         print_statistics(total_requests, below_min_price_count, uptime)
-        
+
     time.sleep(10)  # Pause execution for 30 seconds
