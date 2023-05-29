@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import os
 import time
 from datetime import datetime
+import json
 
 from core.vars import *
 from core.send_price import send_price
@@ -10,6 +11,17 @@ from core.get_price import get_price
 from core.scrape_info import scrape_info
 
 start_time = datetime.now()
+
+def send_out_of_stock():
+    content = f'@everyone The product is out of stock'
+    payload = {
+        'content': content,
+    }
+    json_payload = json.dumps(payload)
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(web_hook, data=json_payload, headers=headers)
 
 def print_statistics(total_requests, below_min_price_count, uptime):
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -20,6 +32,11 @@ while True:
 
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
+
+    stock_badge = soup.find('span', class_='badge stoc-alert no-stock badge-secondary')
+    if stock_badge is not None:
+        send_out_of_stock()
+        break
 
     current_price = get_price(soup)
     if current_price <= min_price:
