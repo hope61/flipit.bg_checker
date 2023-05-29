@@ -9,7 +9,7 @@ from core.send_price import send_price
 from core.get_price import get_price
 from core.scrape_info import scrape_info
 
-start_time = time.time()
+start_time = datetime.now()
 
 def print_statistics(total_requests, below_min_price_count, uptime):
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -28,14 +28,14 @@ while True:
         image_url, phone_title = scrape_info(soup)
         send_price(image_url, phone_title, current_price)
 
-        elapsed_time = time.time() - start_time
-        uptime = str(datetime.fromtimestamp(elapsed_time)).split(".")[0]
+        elapsed_time = datetime.now() - start_time
+        uptime = str(elapsed_time).split(".")[0]
         print_statistics(total_requests, below_min_price_count, uptime)
 
         time.sleep(3600)
     else:
-        elapsed_time = time.time() - start_time
-        uptime = str(datetime.fromtimestamp(elapsed_time)).split(".")[0]
+        elapsed_time = datetime.now() - start_time
+        uptime = str(elapsed_time).split(".")[0]
         print_statistics(total_requests, below_min_price_count, uptime)
-
+        
     time.sleep(10)  # Pause execution for 30 seconds
